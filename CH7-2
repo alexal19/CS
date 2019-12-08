@@ -1,0 +1,63 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() 
+{
+  int* users[10];
+  int copies[10];
+  int project_accounts[10];
+  int master_account;
+  int id;
+  int n_copies;
+  int select;
+  string choice;
+
+for (int i = 0; i < 10; i++)
+  {
+  copies[i] = 0;
+  }
+do
+  {
+  cout << endl << " U)ser A)dministrator Q)uit: ";
+  cin >> choice;
+if(choice == "A"||choice=="a")
+  {
+  cout << endl <<" B)alance M)aster P)roject: ";
+  cin >> choice;
+  if(choice == "B"||choice=="b")
+    {
+    cout << "Master: " <<master_account << endl;
+    for (int i = 0; i < 10; i++)
+      {
+      cout << "Project " << i << ": " << project_accounts[i] << endl;
+      }
+    }
+  else if(choice == "M"||choice=="m")
+    {
+    cout << "\nID: ";
+    cin >> select;
+    users[select] = &master_account;
+    }
+  else if(choice == "P"||choice=="p")
+    {
+    cout << "\nID: ";
+    cin >> select;
+    cout << "\nProject ID: ";
+    cin >> n_copies;
+    users[select] = project_accounts + n_copies;
+    }
+    }
+  else if(choice == "U"||choice=="u")
+    {
+      cout << endl << " ID: ";
+      cin >> select;
+      cout << endl << " Copies: ";
+      cin >>  n_copies;
+      copies[select] += n_copies;
+    }
+}
+while(choice != "Q");
+return 0;
+}
